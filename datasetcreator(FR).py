@@ -1,10 +1,16 @@
 import cv2
 import numpy as np
+import pickle
+import time
 
+details_dict = dict()
 face = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')    #classifier
 cam = cv2.VideoCapture(0)
 
-id = input('Enter user id: ')
+id = int(time.time())
+name = input('Enter Name: ')
+details_dict[id] = name
+
 sampleNum = 0
 
 while(True):
@@ -21,6 +27,9 @@ while(True):
 	cv2.waitKey(1)
 	if(sampleNum > 20):
 		break
+
 cam.release()
 cv2.destroyAllWindows()
-    
+
+with open('details.pickle', 'wb') as f:
+	pickle.dump(details_dict, f)

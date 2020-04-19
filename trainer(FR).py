@@ -22,6 +22,7 @@ def getImage(path):
 	return ids, faces
 
 Ids, faces = getImage(path)
+print(Ids)
 recognizer.train(faces, np.array(Ids))
 recognizer.save('recognizer/TrainingData.yml')
 cv2.destroyAllWindows()
