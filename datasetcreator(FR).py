@@ -31,5 +31,5 @@ while(True):
 cam.release()
 cv2.destroyAllWindows()
 
-with open('details.pickle', 'wb') as f:
+with open('details.pickle', 'ab+') as f:
 	pickle.dump(details_dict, f)
